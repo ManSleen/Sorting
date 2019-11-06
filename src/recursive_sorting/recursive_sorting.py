@@ -2,22 +2,30 @@
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
     merged_arr = [0] * elements
-    j = 0
-    k = 0
+    # k, j = 0, 0
     for index in range(len(merged_arr)):
-        if j < len(arrA) and arrA[j] < arrB[k]:
-            print("arrA[j]", arrA[j])
-            merged_arr[index] = arrA[j]
-            j += 1
-        elif (k < len(arrB)):
-            print("arrB[k]", arrB[k])
-            merged_arr[index] = arrB[k]
-            k += 1
+        if len(arrA) > 0 and len(arrB) > 0:
+            if arrA[0] < arrB[0]:
+                print("arrA[0]:", arrA[0])
+                merged_arr[index] = arrA[0]
+                arrA.remove(arrA[0])
+            else:
+                print("arrB[0]:", arrB[0])
+                merged_arr[index] = arrB[0]
+                arrB.remove(arrB[0])
+        else:
+            if len(arrA) == 0:
+                merged_arr[index] = arrB[0]
+                arrB.remove(arrB[0])
+            else:
+                merged_arr[index] = arrA[0]
+                arrA.remove(arrA[0])
 
     return merged_arr
 
 
-print(merge([1, 2, 4, 7, 9], [3, 5, 6, 8, 10]))
+print(merge([1, 3, 5, 7, 8, 9, 20, 23, 25, 27], [
+      2, 4, 6, 10, 11, 12, 17, 18, 19, 21, 50, 55, 100, 140]))
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 
